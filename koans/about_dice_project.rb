@@ -6,6 +6,14 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 #   code ...
 # end
 
+class DiceSet
+  attr_reader :values
+  # NOTE: the koans don't actually use rand() anywhere before here
+  def roll n
+    @values = (1..n).map { rand(6) + 1 }
+  end
+end
+
 class AboutDiceProject < Neo::Koan
   def test_can_create_a_dice_set
     dice = DiceSet.new
